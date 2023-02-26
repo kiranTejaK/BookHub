@@ -31,10 +31,9 @@ class Header extends Component {
   }
 
   render() {
-    const {home, shelves, favorite} = this.props
+    const {home, shelves} = this.props
     const activeHome = home ? 'active-tab' : ''
     const activeShelves = shelves ? 'active-tab' : ''
-    const activeFavorite = favorite ? 'active-tab' : ''
     const {displayNavbar} = this.state
 
     return (
@@ -62,11 +61,7 @@ class Header extends Component {
                 Bookshelves
               </li>
             </Link>
-            <Link className="link" to="/favorites">
-              <li className={`list-item bookshelves-tab ${activeFavorite}`}>
-                MyFavorites
-              </li>
-            </Link>
+
             <li className="list-item">
               <button
                 onClick={this.onClickLogout}
@@ -104,11 +99,6 @@ class Header extends Component {
                 <Link className="link" to="/shelf">
                   <h1 className={`bookshelves-tab ${activeShelves}`}>
                     BookShelves
-                  </h1>
-                </Link>
-                <Link className="link" to="/favorites">
-                  <h1 className={`bookshelves-tab ${activeFavorite}`}>
-                    MyFavorites
                   </h1>
                 </Link>
               </div>

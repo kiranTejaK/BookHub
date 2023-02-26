@@ -4,10 +4,7 @@ import Loader from 'react-loader-spinner'
 
 import Cookies from 'js-cookie'
 
-import {BsFillStarFill, BsFillHeartFill} from 'react-icons/bs'
-
-import FavoriteContext from '../../Context/FavoriteContext'
-
+import {BsFillStarFill} from 'react-icons/bs'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -110,7 +107,6 @@ class BookItemDetails extends Component {
       readStatus,
       aboutAuthor,
       title,
-      id,
     } = bookDetails
 
     return (
@@ -130,47 +126,6 @@ class BookItemDetails extends Component {
             <p className="book-details-status-heading">
               Status: <span className="book-details-status">{readStatus}</span>
             </p>
-            <FavoriteContext.Consumer>
-              {value => {
-                const {favoriteList, onToggleFavorite} = value
-                const isChecked = favoriteList.find(
-                  eachItem => eachItem.id === id,
-                )
-                const onChangeFavorite = () => {
-                  onToggleFavorite({
-                    id,
-                    title,
-                    readStatus,
-                    rating,
-                    authorName,
-                    aboutAuthor,
-                    coverPic,
-                  })
-                }
-                return (
-                  <>
-                    <input
-                      className="favorite-input"
-                      onChange={onChangeFavorite}
-                      id={id}
-                      type="checkBox"
-                    />
-                    <label htmlFor={id}>
-                      <div className="favorite-container">
-                        <p className="book-details-status-heading">
-                          MyFavorite
-                        </p>
-                        {isChecked ? (
-                          <BsFillHeartFill className="favorite-icon-book-details-selected" />
-                        ) : (
-                          <BsFillHeartFill className="favorite-icon-book-details" />
-                        )}
-                      </div>
-                    </label>
-                  </>
-                )
-              }}
-            </FavoriteContext.Consumer>
           </div>
         </div>
         <div className="container2">
